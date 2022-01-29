@@ -4,6 +4,7 @@ WITH
 mst_users_with_years_month AS (
     SELECT
       *
+      -- rgister_dateの1番目から7個取得する
     , substring(rgister_date, 1, 7) AS year_month
     FROM
       users
@@ -12,6 +13,7 @@ mst_users_with_years_month AS (
 SELECT
   year_month
   , COUNT(DISTINCT user_id) AS register_count
+  -- LAG 関数を使用する場合は、ORDER BY をつける必要があるので、OVERは必ずつける
   , LAG(COUNT(DISTINCT user_id)) OVER(ORDER BY year_month) AS last_month_count
   , 1.0 * COUNT(DISTINCT user_id) / LAG(COUNT(DISTINCT user_id))) OVER(ORDER BY year_month) AS month_over_month_ratio
 FROM

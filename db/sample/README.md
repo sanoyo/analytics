@@ -14,7 +14,7 @@ docker commit unruffled_keller sanoyo/postgres-dvdrental-database
 
 実行
 ```
-docker run -d --name dvdrental-db sanoyo/postgres-dvdrental-database
+docker run -d -p 5433:5432 --name dvdrental-db sanoyo/postgres-dvdrental-database
 ```
 
 ### imageを作成済みの場合
@@ -22,5 +22,5 @@ docker run -d --name dvdrental-db sanoyo/postgres-dvdrental-database
 
 実行
 ```
-docker run -d --name dvdrental-db sanoyo/postgres-dvdrental-database
+docker run -d -p 5433:5432 --name dvdrental-db sanoyo/postgres-dvdrental-database
 ```
